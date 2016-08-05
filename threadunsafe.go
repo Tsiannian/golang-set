@@ -76,6 +76,13 @@ func (set *threadUnsafeSet) IsSubset(other Set) bool {
 	return true
 }
 
+func (set *threadUnsafeSet) Random() interface{} {
+	for elem := range *set {
+		return elem
+	}
+	return nil
+}
+
 func (set *threadUnsafeSet) IsSuperset(other Set) bool {
 	return other.IsSubset(set)
 }

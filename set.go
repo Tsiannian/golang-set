@@ -106,6 +106,8 @@ type Set interface {
 	// range over.
 	Iter() <-chan interface{}
 
+	Random() interface{}
+
 	// Remove a single element from the set.
 	Remove(i interface{})
 

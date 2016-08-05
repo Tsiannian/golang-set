@@ -130,6 +130,12 @@ func (set *threadSafeSet) Cardinality() int {
 	return len(set.s)
 }
 
+func (set *threadSafeSet) Random() interface{} {
+	set.RLock()
+	defer set.RUnlock()
+	return set.s.Random()
+}
+
 func (set *threadSafeSet) Iter() <-chan interface{} {
 	ch := make(chan interface{})
 	go func() {
